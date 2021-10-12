@@ -22,10 +22,10 @@ jobs:
       - name: Destroy stack
         uses: okteto/destroy-stack@master
         with:
-          name: aria2
+          name: subcon
 
       - name: Create stack
         uses: okteto/deploy-stack@master
         with:
-          name: aria2
+          name: subcon
           build: true
