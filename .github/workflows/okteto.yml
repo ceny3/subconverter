@@ -1,0 +1,31 @@
+name: Okteto Reboot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 21 * * *"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare
+        uses: actions/checkout@v2
+      - uses: okteto/login@master
+        with:
+          token: ${{ secrets.OKTETO_TOKEN }}
+
+      - uses: okteto/namespace@master
+        with:
+          namespace: ceny3
+
+      - name: Destroy stack
+        uses: okteto/destroy-stack@master
+        with:
+          name: aria2
+
+      - name: Create stack
+        uses: okteto/deploy-stack@master
+        with:
+          name: aria2
+          build: true
