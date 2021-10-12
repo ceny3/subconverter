@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+    subconverter:
+        restart: always
+        ports:
+            - '25500:25500'
+        image: 'tindy2013/subconverter:latest'
