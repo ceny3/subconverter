@@ -11,21 +11,21 @@ jobs:
     steps:
       - name: Prepare
         uses: actions/checkout@v2
-      - uses: okteto/login@master
+      - uses: okteto/login@main
         with:
           token: ${{ secrets.OKTETO_TOKEN }}
 
-      - uses: okteto/namespace@master
+      - uses: okteto/namespace@main
         with:
           namespace: ceny3
 
       - name: Destroy stack
-        uses: okteto/destroy-stack@master
+        uses: okteto/destroy-stack@main
         with:
           name: subcon
 
       - name: Create stack
-        uses: okteto/deploy-stack@master
+        uses: okteto/deploy-stack@main
         with:
           name: subcon
           build: true
